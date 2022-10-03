@@ -13,15 +13,66 @@
     <py-script>
         import datetime
         print(f"The time now is {datetime.datetime.now()}")
+
+        from pyodide.ffi import create_proxy
+        from js import createObject
+
+        createObject(create_proxy(globals()), "pyodideGlobals")
+        
     </py-script>
     <p>This is the first react file</p>
     <div id="like_button_container"></div>
-    
+    <div id="c2"></div>
     
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   
     <!-- Load our React component. -->
-    <script src="like_button.js"></script>
+    <!-- <script src="like_button.js"></script> -->
+    <script>
+        function createObject(object, variableName){
+            //Bind a variable whose name is the string variableName
+            // to the object called 'object'
+            let execString = variableName + " = object"
+            console.log("Running '" + execString + "'");
+            eval(execString)
+        }
+    </script>
+    <script type="text/babel">
+        'use strict';
+
+        const e = React.createElement;
+
+        class LikeButton extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { liked: false };
+        }
+
+        render() {
+            if (this.state.liked) {
+            return 'You liked this.';
+            }
+
+            return e(
+            'button',
+            { onClick: () => this.setState({ liked: true }) },
+            'Like'
+            );
+        }
+        }
+
+        const domContainer = document.querySelector('#like_button_container');
+        const root = ReactDOM.createRoot(domContainer);
+        root.render(e(LikeButton));
+
+        const secondDom = document.getElementById('c2')
+        const secondRoot = ReactDOM.createRoot(secondDom)
+
+        const element = <h1>This is another root!</h1>;
+        secondRoot.render(element)
+    </script>
 </body>
 </html>
