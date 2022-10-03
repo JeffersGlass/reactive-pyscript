@@ -23,6 +23,7 @@
     <p>This is the first react file</p>
     <div id="like_button_container"></div>
     <div id="c2"></div>
+    <div id="clock"></div>
     
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
@@ -73,6 +74,17 @@
 
         const element = <h1>This is another root!</h1>;
         secondRoot.render(element)
+
+        const clockRoot = ReactDOM.createRoot(document.getElementById("clock"))
+        function tick() {
+            const clockElement = (
+                <div>
+                    <p>It is {new Date().toLocaleTimeString()}</p>
+                </div>
+            )            
+            clockRoot.render(clockElement)
+        }
+        setInterval(tick, 1000)
     </script>
 </body>
 </html>
