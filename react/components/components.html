@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components</title>
+
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+</head>
+<body>
+    <py-script>
+        import datetime
+        print(f"The time now is {datetime.datetime.now()}")
+
+        from pyodide.ffi import create_proxy
+        #from js import createObject
+
+        #createObject(create_proxy(datetime.datetime.now), "pythonDate")
+        
+    </py-script>
+    <p>This is the components demo</p>
+    <div id="root"></div>
+    
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+        }
+
+        function App() {
+        return (
+            <div>
+            <Welcome name="Jeff" />
+            <Welcome name="Mary" />
+            <Welcome name="Winnie" />
+            </div>
+        )};
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+  
+</body>
+</html>
