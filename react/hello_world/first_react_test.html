@@ -17,7 +17,7 @@
         from pyodide.ffi import create_proxy
         from js import createObject
 
-        createObject(create_proxy(globals()), "pyodideGlobals")
+        createObject(create_proxy(datetime.datetime.now), "pythonDate")
         
     </py-script>
     <p>This is the first react file</p>
@@ -33,6 +33,9 @@
     <!-- Load our React component. -->
     <!-- <script src="like_button.js"></script> -->
     <script>
+        function pythonDate() {
+            return 0;
+        }
         function createObject(object, variableName){
             //Bind a variable whose name is the string variableName
             // to the object called 'object'
@@ -79,7 +82,7 @@
         function tick() {
             const clockElement = (
                 <div>
-                    <p>It is {new Date().toLocaleTimeString()}</p>
+                    <p>It is {pythonDate().toString()}</p>
                 </div>
             )            
             clockRoot.render(clockElement)
