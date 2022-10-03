@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First React Test</title>
 
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
 </head>
 <body>
-    <p>This is the first react file"</p>
+    <py-script>
+        import datetime
+        print(f"The time now is {datetime.datetime.now()}")
+    </py-script>
+    <p>This is the first react file</p>
     <div id="like_button_container"></div>
+    
     
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
