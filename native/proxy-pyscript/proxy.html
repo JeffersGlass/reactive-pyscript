@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Test</title>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <p>Target:</p>
+    <div id="target"></div>
+    <script>
+        function createObject(object, variableName){
+            //Bind a variable whose name is the string variableName
+            // to the object called 'object'
+            let execString = variableName + " = object"
+            console.log("Running '" + execString + "'");
+            eval(execString)
+        }
+
+        var pythonDone = new Event('python-done');
+
+        document.addEventListener('python-done', () => {
+            console.log("JS sees that Python is done")
+        })
+    </script>
+    <py-script src="./proxy.py"></py-script>
+</body>
+</html>
